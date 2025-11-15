@@ -1,14 +1,15 @@
 package com.example.demowebshop.components;
 
 import com.example.demowebshop.pages.*;
+import com.example.demowebshop.ui.UserActionsUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 
 public class HeaderBar<T> {
 
     private final WebDriver driver;
     private final T parentPage;
+    private UserActionsUI ui;
 
     // ===== HEADER LINKS =====
     private static final By REGISTER_LINK =
@@ -23,6 +24,8 @@ public class HeaderBar<T> {
     private static final By MY_ACCOUNT_LINK =
             By.cssSelector("a.ico-account");
 
+    private static final By CUSTOMER_INFO_ACCOUNT_LINK = By.cssSelector("li a.account");
+
     private static final By SHOPPING_CART_LINK =
             By.cssSelector("a.ico-cart");
 
@@ -35,51 +38,52 @@ public class HeaderBar<T> {
     public HeaderBar(WebDriver driver, T parentPage) {
         this.driver = driver;
         this.parentPage = parentPage;
-    }
-
-    private WebElement el(By locator) {
-        return driver.findElement(locator);
+        ui = new UserActionsUI(driver);
     }
 
     // ===== NAVIGATION METHODS (FLUENT, RETURNING NEW PAGE OBJECTS) =====
 
     public RegisterPage goToRegister() {
-        el(REGISTER_LINK).click();
+        ui.waitUntilClickable(REGISTER_LINK).click();
         return new RegisterPage(driver);
     }
 
     public LoginPage goToLogin() {
-        el(LOGIN_LINK).click();
+        ui.waitUntilClickable(LOGIN_LINK).click();
         return new LoginPage(driver);
     }
 
     public HomePage goToHome() {
-        el(HOME_LOGO_LINK).click();
+        ui.waitUntilClickable(HOME_LOGO_LINK).click();
         return new HomePage(driver);
     }
 
     public ShoppingCartPage goToShoppingCart() {
-        el(SHOPPING_CART_LINK).click();
+        ui.waitUntilClickable(SHOPPING_CART_LINK).click();
         return new ShoppingCartPage(driver);
     }
 
     public WishlistPage goToWishlist() {
-        el(WISHLIST_LINK).click();
+        ui.waitUntilClickable(WISHLIST_LINK).click();
         return new WishlistPage(driver);
     }
 
     public T logout() {
-        el(LOGOUT_LINK).click();
+        ui.waitUntilClickable(LOGOUT_LINK).click();
         return parentPage;  // usually returns you to home page
     }
 
-    // ===== BOOLEAN STATE HELPERS =====
+    // ===== BOOLEAN AND STRING STATE HELPERS =====
 
     public boolean isLoggedIn() {
-        return !driver.findElements(LOGOUT_LINK).isEmpty();
+        return ui.isElementPresent(LOGOUT_LINK);
     }
 
     public boolean isLoggedOut() {
-        return !driver.findElements(LOGIN_LINK).isEmpty();
+        return ui.isElementPresent(LOGIN_LINK);
+    }
+
+    public String getCustomerInfoAccountText() {
+        return ui.waitUntilVisible(CUSTOMER_INFO_ACCOUNT_LINK).getText();
     }
 }
