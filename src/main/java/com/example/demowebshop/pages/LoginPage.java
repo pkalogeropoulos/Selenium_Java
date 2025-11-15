@@ -65,12 +65,20 @@ public class LoginPage extends BasePage<LoginPage> {
         return new HomePage(driver);
     }
 
+    public HomePage performLogin(String userEmail, String password) {
+        return this.setEmail(userEmail).setPassword(password).clickLoginButton();
+    }
+
     public String getValidationSummaryErrorMessage() {
         return ui.waitUntilVisible(VALIDATION_SUMMARY_ERRORS_LOCATORS).getText();
     }
 
     public String getLoginValidationErrorMessage() {
         return ui.waitUntilVisible(LOGIN_VALIDATION_ERROR_LOCATOR).getText();
+    }
+
+    public String getEmailValidationError() {
+        return ui.waitUntilVisible(EMAIL_FIELD_VALIDATION_ERROR).getText();
     }
 
 }

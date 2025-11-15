@@ -15,6 +15,10 @@ public class UserActionsUI {
     private final WebDriver driver;
     private final WebDriverWait wait;
 
+    public UserActionsUI(WebDriver driver) {
+        this(driver, Duration.ofSeconds(10));
+    }
+
     public UserActionsUI(WebDriver driver, Duration timeout) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, timeout);
