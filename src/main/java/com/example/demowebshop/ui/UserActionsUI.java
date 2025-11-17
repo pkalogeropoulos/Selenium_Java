@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -48,6 +49,12 @@ public class UserActionsUI {
         WebElement el = waitUntilVisible(locator);
         el.clear();
         el.sendKeys(text);
+    }
+
+    public void hover(By locator) {
+        new Actions(driver)
+                .moveToElement(waitUntilClickable(locator))
+                .perform();
     }
 
     public String getText(By locator) {

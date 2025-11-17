@@ -1,8 +1,5 @@
 package com.example.demowebshop.pages;
 
-import com.example.demowebshop.pages.categories.BooksPage;
-import com.example.demowebshop.pages.categories.ComputersPage;
-import com.example.demowebshop.pages.categories.ElectronicsPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -13,24 +10,24 @@ public class HomePage extends BasePage<HomePage> {
     // ==========================
 
     // --- Header / Auth ---
-    private final By REGISTER_LINK_LOCATOR      = By.linkText("Register");
-    private final By LOGIN_LINK_LOCATOR         = By.linkText("Log in");
+    private final By REGISTER_LINK_LOCATOR = By.linkText("Register");
+    private final By LOGIN_LINK_LOCATOR = By.linkText("Log in");
     private final By SHOPPING_CART_LINK_LOCATOR = By.cssSelector("a[href='/cart']");
-    private final By WISHLIST_LINK_LOCATOR      = By.cssSelector("a[href='/wishlist']");
-    private final By ACCOUNT_LINK_LOCATOR       = By.cssSelector(".header-links .account");
+    private final By WISHLIST_LINK_LOCATOR = By.cssSelector("a[href='/wishlist']");
+    private final By ACCOUNT_LINK_LOCATOR = By.cssSelector(".header-links .account");
 
     // --- Search ---
-    private final By SEARCH_INPUT_LOCATOR       = By.id("small-searchterms");
-    private final By SEARCH_BUTTON_LOCATOR      = By.cssSelector("input.button-1.search-box-button");
+    private final By SEARCH_INPUT_LOCATOR = By.id("small-searchterms");
+    private final By SEARCH_BUTTON_LOCATOR = By.cssSelector("input.button-1.search-box-button");
 
     // --- Top menu categories ---
-    private final By BOOKS_CATEGORY_LOCATOR        = By.linkText("Books");
-    private final By COMPUTERS_CATEGORY_LOCATOR    = By.linkText("Computers");
-    private final By ELECTRONICS_CATEGORY_LOCATOR  = By.linkText("Electronics");
-    private final By APPAREL_CATEGORY_LOCATOR      = By.linkText("Apparel & Shoes");
-    private final By DIGITAL_DOWNLOADS_LOCATOR     = By.linkText("Digital downloads");
-    private final By JEWELRY_CATEGORY_LOCATOR      = By.linkText("Jewelry");
-    private final By GIFT_CARDS_LOCATOR            = By.linkText("Gift Cards");
+    private final By BOOKS_CATEGORY_LOCATOR = By.linkText("Books");
+    private final By COMPUTERS_CATEGORY_LOCATOR = By.linkText("Computers");
+    private final By ELECTRONICS_CATEGORY_LOCATOR = By.linkText("Electronics");
+    private final By APPAREL_CATEGORY_LOCATOR = By.linkText("Apparel & Shoes");
+    private final By DIGITAL_DOWNLOADS_LOCATOR = By.linkText("Digital downloads");
+    private final By JEWELRY_CATEGORY_LOCATOR = By.linkText("Jewelry");
+    private final By GIFT_CARDS_LOCATOR = By.linkText("Gift Cards");
 
     // ==========================
     // CONSTRUCTOR
@@ -92,24 +89,5 @@ public class HomePage extends BasePage<HomePage> {
         ui.waitUntilClickable(WISHLIST_LINK_LOCATOR).click();
         return self();
     }
-
-    // --- Top categories (useful entry points) ---
-
-    public BooksPage goToBooks() {
-        ui.waitUntilClickable(BOOKS_CATEGORY_LOCATOR).click();
-        return new BooksPage(driver);
-    }
-
-    public ComputersPage goToComputers() {
-        ui.waitUntilClickable(COMPUTERS_CATEGORY_LOCATOR).click();
-        return new ComputersPage(driver);
-    }
-
-    public ElectronicsPage goToElectronics() {
-        ui.waitUntilClickable(ELECTRONICS_CATEGORY_LOCATOR).click();
-        return new ElectronicsPage(driver);
-    }
-
-    // …and so on for other categories.
 }
  

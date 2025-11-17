@@ -1,5 +1,6 @@
 package com.example.demowebshop.pages;
 
+import com.example.demowebshop.components.HeaderMenuBar;
 import org.openqa.selenium.WebDriver;
 
 public class Pages {
