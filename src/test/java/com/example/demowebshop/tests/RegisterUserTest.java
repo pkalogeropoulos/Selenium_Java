@@ -2,7 +2,7 @@ package com.example.demowebshop.tests;
 
 import com.example.demowebshop.factories.UserFactory;
 import com.example.demowebshop.model.User;
-import com.example.demowebshop.pages.RegisterPage;
+import com.example.demowebshop.pages.header.RegisterPage;
 import com.example.demowebshop.tests.base.BaseTest;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -16,12 +16,14 @@ public class RegisterUserTest extends BaseTest {
     private User userToRegister;
     private User existingUser;
     private RegisterPage registerPage;
+    private UserFactory userFactory;
 
 
     @BeforeClass
     public void initialize() {
-        userToRegister = UserFactory.createRandomUser();
-        existingUser = UserFactory.getDefaultUser();
+        userFactory = new UserFactory(config.auth());
+        userToRegister = userFactory.createRandomUser();
+        existingUser = userFactory.getDefaultUser();
     }
 
     @Test(priority = 1)

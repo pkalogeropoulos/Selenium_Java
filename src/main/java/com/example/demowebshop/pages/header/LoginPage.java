@@ -1,9 +1,10 @@
-package com.example.demowebshop.pages;
+package com.example.demowebshop.pages.header;
 
+import com.example.demowebshop.pages.BasePage;
+import com.example.demowebshop.pages.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class LoginPage extends BasePage<LoginPage> {
 

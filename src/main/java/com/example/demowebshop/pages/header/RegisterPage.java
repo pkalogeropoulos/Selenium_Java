@@ -1,12 +1,10 @@
-package com.example.demowebshop.pages;
+package com.example.demowebshop.pages.header;
 
 import com.example.demowebshop.enums.Gender;
-import com.example.demowebshop.enums.RegisterField;
 import com.example.demowebshop.model.User;
+import com.example.demowebshop.pages.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class RegisterPage extends BasePage<RegisterPage> {
 

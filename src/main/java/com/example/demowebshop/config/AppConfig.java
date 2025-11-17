@@ -12,13 +12,15 @@ public final class AppConfig {
     private final Environment environment;
     private final WebConfig web;
     private final AuthConfig auth;
-    private final ProductConfig productConfig;
+    private final ProductConfig product;
+    private final CardConfig card;
 
     private AppConfig(Environment environment, Properties props) {
         this.environment = environment;
         this.web = new WebConfig(props);
         this.auth = new AuthConfig(props);
-        this.productConfig = new ProductConfig(props);
+        this.product = new ProductConfig(props);
+        this.card = new CardConfig(props);
     }
 
     public static AppConfig getInstance() {
@@ -60,7 +62,11 @@ public final class AppConfig {
     public AuthConfig auth() { return auth; }
 
     public ProductConfig product() {
-        return productConfig;
+        return product;
+    }
+
+    public CardConfig card() {
+        return card;
     }
 }
 

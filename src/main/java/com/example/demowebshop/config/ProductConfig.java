@@ -22,7 +22,7 @@ public class ProductConfig {
     private final String bookTitle;
     private final String bookShortDescription;
     private final String bookFullDescription;
-    private final BigDecimal bookPrice;
+    private final String bookPrice;
     private final String bookAvailability;
 
     // ==========================
@@ -40,9 +40,7 @@ public class ProductConfig {
 
         // Parse number safely to BigDecimal
         String priceStr = props.getProperty(BOOK_PRICE_KEY);
-        this.bookPrice = priceStr == null
-                ? null
-                : new BigDecimal(priceStr.trim().replace(",", ""));
+        this.bookPrice = priceStr;
 
         this.bookAvailability = props.getProperty(BOOK_AVAILABILITY_KEY);
     }
@@ -63,7 +61,7 @@ public class ProductConfig {
         return bookFullDescription;
     }
 
-    public BigDecimal getBookPrice() {
+    public String getBookPrice() {
         return bookPrice;
     }
 

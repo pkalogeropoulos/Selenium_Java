@@ -1,5 +1,7 @@
-package com.example.demowebshop.pages;
+package com.example.demowebshop.pages.header;
 
+import com.example.demowebshop.pages.BasePage;
+import com.example.demowebshop.pages.orders.CartPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -30,8 +32,8 @@ public class WishlistPage extends BasePage<WishlistPage> {
         return self();
     }
 
-    public ShoppingCartPage addToCart() {
+    public CartPage addToCart() {
         driver.findElement(ADD_TO_CART_BUTTON).click();
-        return new ShoppingCartPage(driver);
+        return new CartPage(driver);
     }
 }

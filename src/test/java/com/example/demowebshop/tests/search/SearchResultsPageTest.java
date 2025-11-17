@@ -1,7 +1,7 @@
 package com.example.demowebshop.tests.search;
 
 import com.example.demowebshop.enums.SortBy;
-import com.example.demowebshop.model.SearchResultProduct;
+import com.example.demowebshop.model.Product;
 import com.example.demowebshop.pages.SearchResultsPage;
 import com.example.demowebshop.tests.base.BaseTest;
 import org.testng.annotations.BeforeClass;
@@ -27,10 +27,10 @@ public class SearchResultsPageTest extends BaseTest {
 
     @Test
     public void sortByPriceAscending() {
-        List<SearchResultProduct> computersSortedByPrice = searchResultsPage.sortBy(SortBy.PRICE_LOW_TO_HIGH).getVisibleProducts();
+        List<Product> computersSortedByPrice = searchResultsPage.sortBy(SortBy.PRICE_LOW_TO_HIGH).getVisibleProducts();
 
         // Extract only prices
-        List<BigDecimal> actualPrices = computersSortedByPrice.stream().map(SearchResultProduct::getPrice).collect(Collectors.toList());
+        List<BigDecimal> actualPrices = computersSortedByPrice.stream().map(Product::getPriceBigDecimal).collect(Collectors.toList());
 
 // Create a sorted copy
         List<BigDecimal> sortedPrices = new ArrayList<>(actualPrices);
@@ -42,10 +42,10 @@ public class SearchResultsPageTest extends BaseTest {
 
     @Test
     public void sortByPriceDescending() {
-        List<SearchResultProduct> computersSortedByPrice = searchResultsPage.sortBy(SortBy.PRICE_HIGH_TO_LOW).getVisibleProducts();
+        List<Product> computersSortedByPrice = searchResultsPage.sortBy(SortBy.PRICE_HIGH_TO_LOW).getVisibleProducts();
 
         // Extract only prices
-        List<BigDecimal> actualPrices = computersSortedByPrice.stream().map(SearchResultProduct::getPrice).collect(Collectors.toList());
+        List<BigDecimal> actualPrices = computersSortedByPrice.stream().map(Product::getPriceBigDecimal).collect(Collectors.toList());
 
         // Create a sorted copy
         List<BigDecimal> sortedPrices = new ArrayList<>(actualPrices);
@@ -57,9 +57,9 @@ public class SearchResultsPageTest extends BaseTest {
 
     @Test
     public void sortByNameAscending() {
-        List<SearchResultProduct> computersSortedByName = searchResultsPage.sortBy(SortBy.NAME_A_TO_Z).getVisibleProducts();
+        List<Product> computersSortedByName = searchResultsPage.sortBy(SortBy.NAME_A_TO_Z).getVisibleProducts();
 
-        List<String> actualProductNames = computersSortedByName.stream().map(SearchResultProduct::getTitle).collect(Collectors.toList());
+        List<String> actualProductNames = computersSortedByName.stream().map(Product::getTitle).collect(Collectors.toList());
 
         // Create a sorted copy
         List<String> sortedNames = new ArrayList<>(actualProductNames);
@@ -71,9 +71,9 @@ public class SearchResultsPageTest extends BaseTest {
 
     @Test
     public void sortByNameDescending() {
-        List<SearchResultProduct> computersSortedByName = searchResultsPage.sortBy(SortBy.NAME_Z_TO_A).getVisibleProducts();
+        List<Product> computersSortedByName = searchResultsPage.sortBy(SortBy.NAME_Z_TO_A).getVisibleProducts();
 
-        List<String> actualProductNames = computersSortedByName.stream().map(SearchResultProduct::getTitle).collect(Collectors.toList());
+        List<String> actualProductNames = computersSortedByName.stream().map(Product::getTitle).collect(Collectors.toList());
 
         // Create a sorted copy
         List<String> sortedNames = new ArrayList<>(actualProductNames);

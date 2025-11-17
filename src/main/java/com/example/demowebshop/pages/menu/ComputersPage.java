@@ -5,11 +5,6 @@ import com.example.demowebshop.pages.menu.DesktopsPage;
 import com.example.demowebshop.pages.menu.NotebooksPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 public class ComputersPage extends BasePage<ComputersPage> {
 
@@ -33,7 +28,7 @@ public class ComputersPage extends BasePage<ComputersPage> {
 
     // Specific subcategory links
     private static final By DESKTOPS_LINK =
-            By.cssSelector("div.category-grid a[href='/desktops'] img");
+            By.cssSelector("div.sub-category-grid > div.item-box:first-child");
 
     private static final By NOTEBOOKS_LINK =
             By.cssSelector("div.category-grid a[href='/notebooks']");

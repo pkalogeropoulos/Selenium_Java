@@ -1,6 +1,11 @@
 package com.example.demowebshop.components;
 
 import com.example.demowebshop.pages.*;
+import com.example.demowebshop.pages.header.CustomerInfoPage;
+import com.example.demowebshop.pages.header.LoginPage;
+import com.example.demowebshop.pages.header.RegisterPage;
+import com.example.demowebshop.pages.header.WishlistPage;
+import com.example.demowebshop.pages.orders.CartPage;
 import com.example.demowebshop.ui.UserActionsUI;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -58,14 +63,19 @@ public class HeaderBar<T> {
         return new HomePage(driver);
     }
 
-    public ShoppingCartPage goToShoppingCart() {
+    public CartPage goToShoppingCart() {
         ui.waitUntilClickable(SHOPPING_CART_LINK).click();
-        return new ShoppingCartPage(driver);
+        return new CartPage(driver);
     }
 
     public WishlistPage goToWishlist() {
         ui.waitUntilClickable(WISHLIST_LINK).click();
         return new WishlistPage(driver);
+    }
+
+    public CustomerInfoPage goToCustomerInfoPage() {
+        ui.waitUntilClickable(CUSTOMER_INFO_ACCOUNT_LINK).click();
+        return new CustomerInfoPage(driver);
     }
 
     public T logout() {

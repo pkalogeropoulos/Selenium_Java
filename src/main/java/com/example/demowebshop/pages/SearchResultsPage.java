@@ -2,7 +2,7 @@ package com.example.demowebshop.pages;
 
 import com.example.demowebshop.enums.PageSize;
 import com.example.demowebshop.enums.SortBy;
-import com.example.demowebshop.model.SearchResultProduct;
+import com.example.demowebshop.model.Product;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -107,7 +107,7 @@ public class SearchResultsPage extends BasePage<SearchResultsPage> {
      * Returns all currently visible products on the search results page
      * as strongly-typed model objects, so tests never touch WebElements.
      */
-    public List<SearchResultProduct> getVisibleProducts() {
+    public List<Product> getVisibleProducts() {
         // Wait until at least one result is visible
         List<WebElement> items = ui.waitUntilVisibleAll(PRODUCT_ITEM_LOCATOR);
 
@@ -116,8 +116,8 @@ public class SearchResultsPage extends BasePage<SearchResultsPage> {
                 .collect(Collectors.toList());
     }
 
-    // Internal mapper from WebElement -> SearchResultProduct
-    private SearchResultProduct mapToSearchResultProduct(WebElement item) {
+    // Internal mapper from WebElement -> Product
+    private Product mapToSearchResultProduct(WebElement item) {
         // Title and URL
         WebElement titleLink = item.findElement(PRODUCT_TITLE_LINK_LOCATOR);
         String title = titleLink.getText();
@@ -132,22 +132,16 @@ public class SearchResultsPage extends BasePage<SearchResultsPage> {
 
         // Price text & parsed price
         String priceText = "";
-        BigDecimal price = null;
         List<WebElement> prices = item.findElements(PRODUCT_PRICE_LOCATOR);
         if (!prices.isEmpty()) {
             priceText = prices.get(0).getText();        // e.g. "$1,500.00"
-            String digits = priceText.replaceAll("[^0-9.,]", ""); // "1500.00"
-            if (!digits.isBlank()) {
-                price = new BigDecimal(digits.replace(",", ""));
-            }
         }
 
-        return new SearchResultProduct(
-                title,
-                priceText,
-                price,
-                url
-        );
+        Product product = new Product();
+        product.setTitle(title);
+        product.setPriceText(priceText);
+        product.setProductUrl(url);
+        return product;
     }
     /**
      * Returns all result titles as a list of strings.

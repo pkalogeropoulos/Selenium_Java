@@ -13,29 +13,30 @@ public class ProductDetailsPage extends BasePage<ProductDetailsPage> {
     // ==========================
 
     // Main product info
-    private final By PRODUCT_TITLE_LOCATOR           = By.cssSelector("div.product-name h1");
-    private final By SHORT_DESCRIPTION_LOCATOR       = By.cssSelector("div.short-description");
-    private final By FULL_DESCRIPTION_LOCATOR        = By.cssSelector("div.full-description");
+    private final By PRODUCT_TITLE_LOCATOR = By.cssSelector("div.product-name h1");
+    private final By SHORT_DESCRIPTION_LOCATOR = By.cssSelector("div.short-description");
+    private final By FULL_DESCRIPTION_LOCATOR = By.cssSelector("div.full-description");
 
     // SKU & availability (optional but useful)
-    private final By SKU_VALUE_LOCATOR               = By.cssSelector("div.sku span.value");
-    private final By AVAILABILITY_VALUE_LOCATOR      = By.cssSelector("div.stock span.value");
+    private final By SKU_VALUE_LOCATOR = By.cssSelector("div.sku span.value");
+    private final By AVAILABILITY_VALUE_LOCATOR = By.cssSelector("div.stock span.value");
 
     // Price
     // Demo Web Shop usually uses span with class like "price-value-XX"
-    private final By PRODUCT_PRICE_LOCATOR           = By.cssSelector("div.product-price span[class^='price-value-']");
+    private final By PRODUCT_PRICE_LOCATOR = By.cssSelector("div.product-price span[class^='price-value-']");
 
     // Quantity + Add to cart
-    private final By QUANTITY_INPUT_LOCATOR          = By.cssSelector("input.qty-input");
-    private final By ADD_TO_CART_BUTTON_LOCATOR      = By.cssSelector("input.button-1.add-to-cart-button");
+    private final By QUANTITY_INPUT_LOCATOR = By.cssSelector("input.qty-input");
+    private final By ADD_TO_CART_BUTTON_LOCATOR = By.cssSelector("input.button-1.add-to-cart-button");
 
     // Wishlist / compare / email a friend
-    private final By ADD_TO_WISHLIST_BUTTON_LOCATOR  = By.cssSelector("input.button-2.add-to-wishlist-button");
-    private final By ADD_TO_COMPARE_BUTTON_LOCATOR   = By.cssSelector("input.button-2.add-to-compare-list-button");
-    private final By EMAIL_A_FRIEND_BUTTON_LOCATOR   = By.cssSelector("input.button-2.email-a-friend-button");
+    private final By ADD_TO_WISHLIST_BUTTON_LOCATOR = By.cssSelector("input.button-2.add-to-wishlist-button");
+    private final By ADD_TO_COMPARE_BUTTON_LOCATOR = By.cssSelector("input.button-2.add-to-compare-list-button");
+    private final By EMAIL_A_FRIEND_BUTTON_LOCATOR = By.cssSelector("input.button-2.email-a-friend-button");
+    private final By NOTIFICATION_BAR_LOCATOR = By.id("bar-notification");
 
     // Review links
-    private final By ADD_REVIEW_LINK_LOCATOR         = By.cssSelector("div.product-review-links a[href*='productreviews']");
+    private final By ADD_REVIEW_LINK_LOCATOR = By.cssSelector("div.product-review-links a[href*='productreviews']");
 
     // ==========================
     // CONSTRUCTOR
@@ -43,18 +44,6 @@ public class ProductDetailsPage extends BasePage<ProductDetailsPage> {
 
     public ProductDetailsPage(WebDriver driver) {
         super(driver);
-    }
-
-    // ==========================
-    // PAGE SYNC
-    // ==========================
-
-    /**
-     * Wait for the product title to be visible, meaning the page is ready.
-     */
-    public ProductDetailsPage waitForPageToLoad() {
-        ui.waitUntilVisible(PRODUCT_TITLE_LOCATOR);
-        return self();
     }
 
     // ==========================
@@ -153,5 +142,9 @@ public class ProductDetailsPage extends BasePage<ProductDetailsPage> {
         // In reality this navigates to an "Email a friend" page,
         // but you can change the return type later if you model that page.
         return self();
+    }
+
+    public boolean isNotificationBarVisible() {
+        return ui.isElementPresent(NOTIFICATION_BAR_LOCATOR);
     }
 }

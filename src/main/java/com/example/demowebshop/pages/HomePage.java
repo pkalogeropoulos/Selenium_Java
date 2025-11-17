@@ -1,5 +1,7 @@
 package com.example.demowebshop.pages;
 
+import com.example.demowebshop.pages.header.LoginPage;
+import com.example.demowebshop.pages.header.RegisterPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
