@@ -19,11 +19,6 @@ public final class DriverFactory {
         // later: read browser from config (chrome/firefox/edge/remote)
         String browser = config.getBrowser();
 
-        ChromeDriverService service = new ChromeDriverService.Builder()
-                .withVerbose(true)
-                .withLogFile(new File("chromedriver.log"))
-                .build();
-
         return switch (browser) {
             case "chrome"://we have setup our chrome to run by default in headless mode
                 WebDriverManager.chromedriver().setup();
