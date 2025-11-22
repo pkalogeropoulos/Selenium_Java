@@ -25,21 +25,15 @@ public final class DriverFactory {
                 .build();
 
         return switch (browser) {
-            // you can put config-driven flags here
-                // options.addArguments("--headless=new");
             case "chrome":
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless=new");
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--window-size=1920,1080");
                 yield new ChromeDriver();
-            case "chrome-headless":
-                options = new ChromeOptions();
-                options.addArguments("--headless=new"); // new headless mode
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-dev-shm-usage");
-                yield new ChromeDriver(options);
+            //Her we can add support for other browsers too
             default:
                 WebDriverManager.chromedriver().setup();
                 options = new ChromeOptions();
