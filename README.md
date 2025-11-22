@@ -4,6 +4,8 @@
 ![TestNG](https://img.shields.io/badge/TestNG-7.11.0-orange)
 ![Maven](https://img.shields.io/badge/Maven-3.9.x-blue)
 [![codecov](https://codecov.io/github/pkalogeropoulos/Selenium_Java/graph/badge.svg?token=2G2ES2C91B)](https://codecov.io/github/pkalogeropoulos/Selenium_Java)
+![WebDriverManager](https://img.shields.io/badge/WebDriverManager-latest-blue)
+![Checkstyle](https://img.shields.io/badge/Checkstyle-passing-brightgreen)
 ![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)
 
 Demo Web Shop Automation Framework (Selenium • Java • TestNG)
