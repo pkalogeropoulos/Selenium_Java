@@ -21,7 +21,7 @@ public enum Environment {
 
     public static Environment fromString(String env) {
         if (StringUtils.isNullOrEmpty(env)) {
-            return PRODUCTION;
+            return DEV;
         }
         env = env.trim().toLowerCase();
         for (Environment e : values()) {
