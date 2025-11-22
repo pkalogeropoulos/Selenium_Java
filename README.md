@@ -1,3 +1,5 @@
+[![CI](https://github.com/pkalogeropoulos/Selenium_Java/actions/workflows/ci.yml/badge.svg)](https://github.com/pkalogeropoulos/Selenium_Java/actions/workflows/ci.yml)
+
 Demo Web Shop Automation Framework (Selenium • Java • TestNG)
 
 This repository contains a modern, scalable UI test automation framework built for the Demo Web Shop website:

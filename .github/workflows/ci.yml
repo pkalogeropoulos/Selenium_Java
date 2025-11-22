@@ -33,12 +33,10 @@ jobs:
       - name: Run tests
         run: mvn -B test -Dwebdriver.chrome.verboseLogging=true -Dwebdriver.chrome.logfile=chromedriver.log
         
-      - name: Show ChromeDriver log (if present)
-        if: always()
-        run: |
-          if [ -f chromedriver.log ]; then
-            echo "=== ChromeDriver log ==="
-            cat chromedriver.log
-          else
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          files: target/site/jacoco/jacoco.xml
+
             echo "No chromedriver.log found"
           fi
