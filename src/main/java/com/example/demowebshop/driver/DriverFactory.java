@@ -4,7 +4,10 @@ import com.example.demowebshop.config.WebConfig;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.chrome.ChromeOptions;
+
+import java.io.File;
 // import other browsers as needed
 
 public final class DriverFactory {
@@ -16,6 +19,10 @@ public final class DriverFactory {
         // later: read browser from config (chrome/firefox/edge/remote)
         String browser = config.getBrowser();
 
+        ChromeDriverService service = new ChromeDriverService.Builder()
+                .withVerbose(true)
+                .withLogFile(new File("chromedriver.log"))
+                .build();
 
         return switch (browser) {
             // you can put config-driven flags here
