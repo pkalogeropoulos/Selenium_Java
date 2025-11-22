@@ -25,6 +25,11 @@ jobs:
         with:
           chrome-version: stable
 
+      - name: Show Chrome version
+        run: |
+          which google-chrome || echo "chrome not found"
+          google-chrome --version || echo "no version"
+
       - name: Run tests
         run: mvn -B test
 
