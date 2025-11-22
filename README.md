@@ -149,3 +149,7 @@ public abstract class BasePage<T extends BasePage<T>> {
 mvn clean test
 mvn clean test -Denv=staging -Dbrowser=chrome
 ```
+Or you can execute: 
+```
+src/test/resources/tests.xml
+```
