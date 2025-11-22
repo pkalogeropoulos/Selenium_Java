@@ -50,6 +50,7 @@ public class CheckoutUserTest extends BaseTest {
         //Go to cart page
         OrderCompletedPage orderCompletedPage = pages
                 .home()
+                .open()
                 .header()
                 .goToShoppingCart()
                 .clickTermsOfService()
