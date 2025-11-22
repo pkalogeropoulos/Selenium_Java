@@ -1,5 +1,6 @@
 [![CI](https://github.com/pkalogeropoulos/Selenium_Java/actions/workflows/ci.yml/badge.svg)](https://github.com/pkalogeropoulos/Selenium_Java/actions/workflows/ci.yml)
 ![Java](https://img.shields.io/badge/Java-21-blue)
+![TestNG](https://img.shields.io/badge/TestNG-7.11.0-orange)
 [![codecov](https://codecov.io/github/pkalogeropoulos/Selenium_Java/graph/badge.svg?token=2G2ES2C91B)](https://codecov.io/github/pkalogeropoulos/Selenium_Java)
 
 Demo Web Shop Automation Framework (Selenium • Java • TestNG)
