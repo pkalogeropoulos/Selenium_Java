@@ -27,3 +27,13 @@ jobs:
 
       - name: Run tests
         run: mvn -B test
+
+      - name: Show ChromeDriver log (if present)
+        if: always()
+        run: |
+          if [ -f chromedriver.log ]; then
+            echo "=== ChromeDriver log ==="
+            cat chromedriver.log
+          else
+            echo "No chromedriver.log found"
+          fi
