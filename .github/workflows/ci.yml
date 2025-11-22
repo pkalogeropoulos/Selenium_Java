@@ -1,3 +1,11 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -23,7 +31,7 @@ jobs:
           google-chrome --version || echo "no version"
 
       - name: Run tests
-        run: mvn -B test -Dwebdriver.chrome.verboseLogging=true -Dwebdriver.chrome.logfile=chromedriver.log
+        run: mvn -B test
 
       - name: Show ChromeDriver log (if present)
         if: always()
