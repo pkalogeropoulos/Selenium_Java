@@ -17,6 +17,9 @@ import org.testng.asserts.SoftAssert;
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertTrue;
 
+/**
+ * Performs a basic purchase test
+ */
 public class CheckoutUserTest extends BaseTest {
 
     private User registeredUser;
