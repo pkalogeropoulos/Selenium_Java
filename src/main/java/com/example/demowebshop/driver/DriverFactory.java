@@ -22,9 +22,13 @@ public final class DriverFactory {
                 // options.addArguments("--headless=new");
             case "chrome":
                 WebDriverManager.chromedriver().setup();
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--window-size=1920,1080");
                 yield new ChromeDriver();
             case "chrome-headless":
-                ChromeOptions options = new ChromeOptions();
+                options = new ChromeOptions();
                 options.addArguments("--headless=new"); // new headless mode
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
@@ -32,6 +36,9 @@ public final class DriverFactory {
             default:
                 WebDriverManager.chromedriver().setup();
                 options = new ChromeOptions();
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--window-size=1920,1080");
                 yield new ChromeDriver(options);
         };
     }
