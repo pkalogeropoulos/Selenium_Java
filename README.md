@@ -143,3 +143,9 @@ public abstract class BasePage<T extends BasePage<T>> {
     public HeaderMenuBar<T> menu() { return new HeaderMenuBar<>(driver, self()); }
 }
 ```
+
+## 🚀 How to run
+```
+mvn clean test
+mvn clean test -Denv=staging -Dbrowser=chrome
+```
