@@ -1,13 +1,11 @@
 package com.example.demowebshop.ui;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.sql.Time;
 import java.time.Duration;
 import java.util.List;
 
@@ -37,8 +35,17 @@ public class UserActionsUI {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
+    public WebElement waitUntilClickable(WebElement webElement) {
+        return wait.until(ExpectedConditions.elementToBeClickable(webElement));
+    }
+
     public boolean isElementPresent(By locator) {
-        return !driver.findElements(locator).isEmpty();
+        try {
+            waitUntilVisible(locator);
+            return true;
+        } catch (TimeoutException ex) {
+            return false;
+        }
     }
 
     public void click(By locator) {
@@ -54,6 +61,22 @@ public class UserActionsUI {
     public void hover(By locator) {
         new Actions(driver)
                 .moveToElement(waitUntilClickable(locator))
+                .perform();
+    }
+
+    public void scrollTo(By locator) {
+        this.scrollTo(waitUntilVisible(locator));
+    }
+
+    public void scrollTo(WebElement element) {
+        ((org.openqa.selenium.JavascriptExecutor) driver)
+                .executeScript("arguments[0].scrollIntoView({ behavior: 'smooth', block: 'center' });",
+                        element);
+    }
+
+    public void hover(WebElement element) {
+        new Actions(driver)
+                .moveToElement(waitUntilClickable(element))
                 .perform();
     }
 

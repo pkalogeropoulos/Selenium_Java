@@ -54,8 +54,7 @@ public class HomePage extends BasePage<HomePage> {
     // --- Search ---
 
     public HomePage typeSearch(String query) {
-        ui.waitUntilVisible(SEARCH_INPUT_LOCATOR).clear();
-        ui.waitUntilVisible(SEARCH_INPUT_LOCATOR).sendKeys(query);
+        ui.type(SEARCH_INPUT_LOCATOR, query);
         return self();
     }
 

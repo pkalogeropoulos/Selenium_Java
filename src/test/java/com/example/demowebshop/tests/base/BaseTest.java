@@ -36,7 +36,7 @@ public abstract class BaseTest {
     protected AppConfig config;
     protected Pages pages;
 
-    @BeforeSuite(alwaysRun = true)
+    @BeforeClass(alwaysRun = true)
     public void initConfig() {
         // Force early config load so any config problems fail fast
         this.config = AppConfig.getInstance();

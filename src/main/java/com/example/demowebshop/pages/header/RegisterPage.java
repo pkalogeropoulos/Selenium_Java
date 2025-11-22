@@ -172,10 +172,7 @@ public class RegisterPage extends BasePage<RegisterPage> {
     // ==========================
 
     public String getSuccessMessage() {
-        if (driver.findElements(SUCCESS_MESSAGE_LOCATOR).isEmpty()) {
-            return null;
-        }
-        return driver.findElement(SUCCESS_MESSAGE_LOCATOR).getText();
+        return ui.waitUntilVisible(SUCCESS_MESSAGE_LOCATOR).getText();
     }
 
     public boolean isRegistrationSuccessful() {

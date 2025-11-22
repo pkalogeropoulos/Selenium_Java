@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Payments API">
+
+<!--    <parameter name="env" value="dev"/>-->
+<!--    <parameter name="browser" value="chrome"/>-->
+    <listeners>
+        <listener class-name="io.qameta.allure.testng.AllureTestNg"/>
+    </listeners>
+
+    <test thread-count="5" parallel="classes" name="Sample validations and integration tests for the demowebshop.tricentis.com site">
+        <classes>
+            <class name="com.example.demowebshop.tests.search.BookProductTest"/>
+            <class name="com.example.demowebshop.tests.search.SearchResultsPageTest"/>
+            <class name="com.example.demowebshop.tests.CheckoutUserTest"/>
+            <class name="com.example.demowebshop.tests.LoginUserTest"/>
+            <class name="com.example.demowebshop.tests.RegisterUserTest"/>
+        </classes>
+    </test>
+
+</suite>
+
+
