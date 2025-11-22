@@ -32,7 +32,7 @@ public final class DriverFactory {
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--window-size=1920,1080");
-                yield new ChromeDriver();
+                yield new ChromeDriver(options);
             //Her we can add support for other browsers too
             default:
                 WebDriverManager.chromedriver().setup();
