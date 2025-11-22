@@ -1,2 +1,151 @@
-# Selenium_Java
-A test framework with Selenium, Java and TestNG using the https://demowebshop.tricentis.com as our test site.
+Demo Web Shop Automation Framework (Selenium • Java • TestNG)
+
+This repository contains a modern, scalable UI test automation framework built for the Demo Web Shop website:
+
+👉 https://demowebshop.tricentis.com/
+
+The project showcases clean architecture, Fluent Page Object Model (POM), component-based design, configurable environments, TestNG test orchestration, Allure reporting, and a fully modular structure that reflects industry-standard best practices.
+
+This framework is designed to be portfolio-quality for SDET / QA Automation Engineer roles.
+
+
+<h1>Features</h1>
+✅ Selenium WebDriver (Java)
+
+Modern WebDriver design with smart waits, JS utilities, scrolling helpers, and robust element handling.
+<p>
+
+✅ Fluent Page Object Model (POM)
+
+* Clean, chainable APIs
+
+* Highly readable tests
+
+* No PageFactory
+
+* Strong typing via generics (BasePage<T>)
+
+* Reusable UI components (HeaderBar, HeaderMenuBar, etc.)
+<p></p>
+
+✅ Component-based architecture
+
+Shared UI elements like the site header and navigation menu are modeled as reusable components — not duplicated across pages.
+
+Examples:
+
+* HeaderBar (Register/Login/Logout/Cart/Wishlist)
+
+* HeaderMenuBar (Books, Computers, Electronics, etc.)
+
+
+✅ Full site coverage
+
+POMs for all major pages:
+
+* LoginPage
+
+* RegisterPage
+
+* HomePage
+
+* ComputersPage / Desktops / Notebooks / Accessories
+
+* ShoppingCartPage
+
+* WishlistPage
+
+* MyAccountPage
+
+* CustomerInfoPage
+
+* CheckoutPage (one-page checkout)
+
+* OrderCompletedPage (Thank You page)
+
+  
+✅ Configurable environments (AppConfig)
+
+* Automatic loading from src/main/resources/config-*.properties:
+
+* config-dev.properties
+
+* config-qa.properties
+
+* config-prod.properties
+
+* Supports -Denv=qa to switch environments dynamically.
+
+✅ TestBase with WebDriver management
+
+* Central WebDriver creation
+
+* Before/After suite & method
+
+* Automatic screenshot capture on test failure
+
+* Allure attachment integration
+
+
+✅ TestNG test orchestration
+
+* testng.xml under src/test/resources
+
+* Suite, parallel tests, packages organization
+
+✅ Allure reporting
+
+* Step annotations
+
+* Test metadata (Epic, Feature, Story, Severity)
+
+* Automatic screenshot attachments
+
+* Pretty HTML repor
+
+## 📁 Project Structure
+```
+project-root/
+│
+├── pom.xml
+├── README.md
+│
+├── src/
+│ ├── main/
+│ │ ├── java/
+│ │ │ └── com.example.demowebshop/
+│ │ │ ├── config/
+│ │ │ ├── pages/
+│ │ │ └── components/
+│ │ └── resources/
+│ │ └── config.properties
+│ │
+│ └── test/
+│ ├── java/
+│ │ └── com.example.demowebshop.tests/
+│ │ └── base/
+│ └── resources/
+│ └── testng.xml
+```
+
+## 🧱 Architecture Overview
+Every page extends:
+```
+public abstract class BasePage<T extends BasePage<T>> {
+    protected WebDriver driver;
+    protected WebDriverWait wait;
+
+    protected T self() {
+        return (T) this;
+    }
+
+    public HeaderBar<T> header()   { return new HeaderBar<>(driver, self()); }
+    public HeaderMenuBar<T> menu() { return new HeaderMenuBar<>(driver, self()); }
+}
+```
+
+## 🚀 How to run
+```
+mvn clean test
+mvn clean test -Denv=staging -Dbrowser=chrome
+```
