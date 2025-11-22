@@ -25,7 +25,7 @@ public final class DriverFactory {
                 .build();
 
         return switch (browser) {
-            case "chrome":
+            case "chrome"://we have setup our chrome to run by default in headless mode
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless=new");
@@ -37,6 +37,7 @@ public final class DriverFactory {
             default:
                 WebDriverManager.chromedriver().setup();
                 options = new ChromeOptions();
+                options.addArguments("--headless=new");
                 options.addArguments("--no-sandbox");
                 options.addArguments("--disable-dev-shm-usage");
                 options.addArguments("--window-size=1920,1080");
