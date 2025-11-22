@@ -79,14 +79,4 @@ public class UserActionsUI {
                 .moveToElement(waitUntilClickable(element))
                 .perform();
     }
-
-    public String getText(By locator) {
-        return waitUntilVisible(locator).getText();
-    }
-
-    public void scrollIntoView(By locator) {
-        WebElement el = waitUntilVisible(locator);
-        ((JavascriptExecutor) driver)
-                .executeScript("arguments[0].scrollIntoView(true);", el);
-    }
 }
