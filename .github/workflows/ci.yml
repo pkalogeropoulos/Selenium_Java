@@ -31,8 +31,8 @@ jobs:
           google-chrome --version || echo "no version"
 
       - name: Run tests
-        run: mvn -B test
-
+        run: mvn -B test -Dwebdriver.chrome.verboseLogging=true -Dwebdriver.chrome.logfile=chromedriver.log
+        
       - name: Show ChromeDriver log (if present)
         if: always()
         run: |
