@@ -16,8 +16,16 @@ This repository contains a modern, scalable UI test automation framework built f
 
 The project showcases clean architecture, Fluent Page Object Model (POM), component-based design, configurable environments, TestNG test orchestration, Allure reporting, and a fully modular structure that reflects industry-standard best practices.
 
-This framework is designed to be portfolio-quality for SDET / QA Automation Engineer roles.
+<h1>What are trying to achieve?</h1>
+* Designing a scalable UI automation framework from scratch
 
+* Applying Fluent POM + component-based architecture
+
+* Managing WebDriver and configuration in a CI-friendly way
+
+* Integrating reporting (Allure), coverage (JaCoCo/Codecov), and static analysis (Checkstyle)
+
+* Running tests in GitHub Actions with headless Chrome and environment-specific configs
 
 <h1>Features</h1>
 ✅ Selenium WebDriver (Java)
