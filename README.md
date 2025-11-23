@@ -111,7 +111,7 @@ POMs for all major pages:
 
 * Automatic screenshot attachments
 
-* Pretty HTML repor
+* Pretty HTML report (via Allure)
 
 ## 📁 Project Structure
 ```
@@ -124,18 +124,29 @@ project-root/
 │ ├── main/
 │ │ ├── java/
 │ │ │ └── com.example.demowebshop/
-│ │ │ ├── config/
-│ │ │ ├── pages/
-│ │ │ └── components/
+│ │ │ | └── config/
+│ │ │ | └── driver/
+│ │ │ | └── enums/
+│ │ │ | └── factories/
+│ │ │ | └── model/
+│ │ │ | └── pages/
+│ │ │ | └── components/
+│ │ │ | └── ui/
+│ │ │
 │ │ └── resources/
-│ │ └── config.properties
+│ │ │ | └── config-dev.properties
+│ │ │ | └── config-production.properties
+│ │ │ | └── config-qa.properties
+│ │ │ | └── config-staging.properties
 │ │
 │ └── test/
 │ ├── java/
 │ │ └── com.example.demowebshop.tests/
-│ │ └── base/
+│ │ | └── base/
+│ │ | └── search/
+│ │ 
 │ └── resources/
-│ └── testng.xml
+│ | └── tests.xml
 ```
 
 ## 🧱 Architecture Overview
